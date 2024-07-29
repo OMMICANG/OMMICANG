@@ -1,4 +1,4 @@
-## Hi there 👋
+## OMMICANG, AN APP MADE FOR HUMANITY, By: OMMICANG.
 
 <!--
 **OMMICANG/OMMICANG** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
