@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/OMMICANG/static/css/main.14506f29.css",
-    "main.js": "/OMMICANG/static/js/main.dc0d7fc2.js",
+    "main.js": "/OMMICANG/static/js/main.7f9de386.js",
     "static/js/453.a7d4ebab.chunk.js": "/OMMICANG/static/js/453.a7d4ebab.chunk.js",
     "index.html": "/OMMICANG/index.html",
     "main.14506f29.css.map": "/OMMICANG/static/css/main.14506f29.css.map",
-    "main.dc0d7fc2.js.map": "/OMMICANG/static/js/main.dc0d7fc2.js.map",
+    "main.7f9de386.js.map": "/OMMICANG/static/js/main.7f9de386.js.map",
     "453.a7d4ebab.chunk.js.map": "/OMMICANG/static/js/453.a7d4ebab.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.14506f29.css",
-    "static/js/main.dc0d7fc2.js"
+    "static/js/main.7f9de386.js"
   ]
 }
