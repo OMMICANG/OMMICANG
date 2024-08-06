@@ -45,7 +45,7 @@ function App() {
             <div>
                 {loading ? <Preloader /> : (
                     <Routes>
-                        <Route path="/ommicangprime" element={<LandingPage />}/>
+                        <Route path="/" element={<LandingPage />}/>
                         <Route path="/auth" element={<AuthPage />}/>
                     </Routes>
                 )}
