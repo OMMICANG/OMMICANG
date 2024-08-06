@@ -4,6 +4,8 @@ import './App.css'; // Ensure you have this file for custom styles
 import Preloader from './preloader'; // Import the Preloader component
 import LandingPage from './landingPage'; // Import the landingPage component
 import AuthPage from './AuthPage';
+import IsMobile from './IsMobile'; // Import the IsMobile component
+import HomePage from './HomePage' // Import HomePage Component
 
 // Define the type for the window object with Telegram
 interface TelegramWindow extends Window {
@@ -49,16 +51,21 @@ const App: React.FC = () => {
 
   return (
     <Router>
-      <div>
-        {loading ? (
-          <Preloader />
-        ) : (
-          <Routes>
-            <Route path="/" element={<LandingPage />} />
-            <Route path="/auth" element={<AuthPage />} />
-          </Routes>
-        )}
-      </div>
+      <IsMobile>
+        <div>
+          {loading ? (
+            <Preloader />
+          ) : (
+            <Routes>
+              <Route path="/" element={<LandingPage />} />
+              <Route path="/auth" element={<AuthPage />} />
+              <Route path="/home" element={<HomePage />} />
+            </Routes>
+          )}
+        </div>
+      </IsMobile>
+
+
     </Router>
   );
 };

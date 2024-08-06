@@ -1,24 +1,103 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Authpage.css'; // Ensure you have this file for custom styles
 import logo from './IMGs/Logo.jpg'; // Import the image file
 
 const AuthPage: React.FC = () => {
+    const [name, setName] = useState<string>('');
+    const [error, setError] = useState<string | null>(null);
+    const [success, setSuccess] = useState<string | null>(null); // Add state for success message
+    const navigate = useNavigate();
+
+    const handleSubmit = async (event: React.FormEvent) => {
+        event.preventDefault();
+
+        if (window.Telegram && window.Telegram.WebApp) {
+            const telegram = window.Telegram.WebApp;
+
+            try {
+                const response = await fetch('/api/saveUser', { // Adjust the API endpoint as necessary
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        name,
+                        telegramId: telegram.initDataUnsafe.user?.id // Assuming the user ID is available
+                    }),
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok.');
+                }
+
+                const result = await response.json();
+                setSuccess('User saved successfully!'); // Handle success
+                console.log(result);
+
+                // Redirect to HomePage
+                navigate('/home');
+            } catch (err) {
+                setError('An error occurred while saving the user.');
+                console.error(err);
+            }
+        } else {
+            setError('Telegram Web App is not initialized.');
+        }
+    };
+
     return (
         <div className="box">
             <span className="borderLine"></span>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <img src={logo} alt="Logo" className="form-logo" />
                 <h2>Sign In</h2>
                 <h5>Hey, Stranger!</h5>
                 <div className="inputBox">
-                    <input type="text" required />
+                    <input
+                        type="text"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        required
+                    />
                     <span>Enter Name</span>
                     <i></i>
                 </div>
                 <input type="submit" value="Sign Up" />
+                {error && <p className="error">{error}</p>}
+                {success && <p className="success">{success}</p>} {/* Display success message */}
             </form>
         </div>
     );
 };
 
 export default AuthPage;
+
+
+
+
+
+// import React from 'react';
+// import './Authpage.css'; // Ensure you have this file for custom styles
+// import logo from './IMGs/Logo.jpg'; // Import the image file
+
+// const AuthPage: React.FC = () => {
+//     return (
+//         <div className="box">
+//             <span className="borderLine"></span>
+//             <form>
+//                 <img src={logo} alt="Logo" className="form-logo" />
+//                 <h2>Sign In</h2>
+//                 <h5>Hey, Stranger!</h5>
+//                 <div className="inputBox">
+//                     <input type="text" required />
+//                     <span>Enter Name</span>
+//                     <i></i>
+//                 </div>
+//                 <input type="submit" value="Sign Up" />
+//             </form>
+//         </div>
+//     );
+// };
+
+// export default AuthPage;
