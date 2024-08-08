@@ -1,33 +1,64 @@
 const express = require('express');
-const bodyParser = require('body-parser');
-const sqlite3 = require('sqlite3').verbose();
-
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(bodyParser.json());
+app.use(express.json());
 
-const db = new sqlite3.Database(':memory:');
-db.serialize(() => {
-  db.run('CREATE TABLE users (name TEXT, telegramId TEXT)');
+// Example endpoint to handle POST requests from the AuthPage
+app.post('/', (req, res) => {
+    const { name, telegramId } = req.body;
+
+    // Add logic here to save the data to your SQLite database or other storage.
+    // For now, we'll just log the data to the console.
+    console.log(`Received name: ${name}, Telegram ID: ${telegramId}`);
+
+    // Send a response back to the client.
+    res.status(200).send('User registered successfully');
 });
 
-app.post('/register', (req, res) => {
-  const { name, telegramId } = req.body;
-  const stmt = db.prepare('INSERT INTO users (name, telegramId) VALUES (?, ?)');
-  stmt.run(name, telegramId, function(err) {
-    if (err) {
-      res.status(500).send({ message: 'Database error' });
-    } else {
-      res.status(200).send({ message: 'User registered successfully' });
-    }
-  });
-  stmt.finalize();
+// Default route (optional)
+app.get('/', (req, res) => {
+    res.send('Server is running');
 });
 
 app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+    console.log(`Server running on port ${port}`);
 });
+
+
+
+
+
+//const express = require('express');
+// const bodyParser = require('body-parser');
+// const sqlite3 = require('sqlite3').verbose();
+
+// const app = express();
+// const port = process.env.PORT || 3000;
+
+// app.use(bodyParser.json());
+
+// const db = new sqlite3.Database(':memory:');
+// db.serialize(() => {
+//   db.run('CREATE TABLE users (name TEXT, telegramId TEXT)');
+// });
+
+// app.post('/register', (req, res) => {
+//   const { name, telegramId } = req.body;
+//   const stmt = db.prepare('INSERT INTO users (name, telegramId) VALUES (?, ?)');
+//   stmt.run(name, telegramId, function(err) {
+//     if (err) {
+//       res.status(500).send({ message: 'Database error' });
+//     } else {
+//       res.status(200).send({ message: 'User registered successfully' });
+//     }
+//   });
+//   stmt.finalize();
+// });
+
+// app.listen(port, () => {
+//   console.log(`Server running on port ${port}`);
+// });
 
 
 
