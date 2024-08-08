@@ -37,7 +37,7 @@ const AuthPage: React.FC = () => {
         });
 
         if (response.ok) {
-          telegram.showPopup({ message: 'Sign up successful!', buttons: [{ text: 'OK' }] });
+          telegram.showPopup({ messgit age: 'Sign up successful!', buttons: [{ text: 'OK' }] });
           navigate('/homepage');
         } else {
           setError('Failed to register user');
@@ -82,8 +82,6 @@ const AuthPage: React.FC = () => {
 };
 
 export default AuthPage;
-
-
 
 
 
