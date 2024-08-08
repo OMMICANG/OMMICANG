@@ -28,7 +28,7 @@ const AuthPage: React.FC = () => {
       });
 
       if (response.ok) {
-        navigate('/home');
+        navigate('/homepage');
       } else {
         console.error('Failed to register user');
       }

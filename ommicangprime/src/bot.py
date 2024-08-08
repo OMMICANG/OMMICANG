@@ -4,7 +4,7 @@ from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from aiogram.utils import executor
 
 API_TOKEN = '7221470497:AAEFZSWmdewKJuNC_i89umxZZpUfVat0mmA'
-WEB_APP_URL = 'https://ommicang.onrender.com'
+WEB_APP_URL = 'https:ommicang.github.io/OMMICANG'
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
