@@ -1,0 +1,17 @@
+/* App.css */
+body {
+  background-color: black;
+  color: white;
+  margin: 0; /* Remove default margin */
+  height: 100vh; /* Ensure body takes full height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-size: 15px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
