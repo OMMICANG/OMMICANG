@@ -30,12 +30,12 @@ const AuthPage: React.FC = () => {
       const userId = telegramUser.id;
 
       try {
-        const response = await fetch('https://servertest-2l8a.onrender.com', {
+        const response = await fetch('https://replit.com/@ommicang/Tester', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ name, telegramId: userId }),
-        });
-
+      });
+      
         if (response.ok) {
           telegram.showPopup({ message: 'Sign up successful!', buttons: [{ text: 'OK' }] });
           navigate('/homepage');
