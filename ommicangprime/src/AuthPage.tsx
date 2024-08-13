@@ -30,7 +30,7 @@ const AuthPage: React.FC = () => {
       const userId = telegramUser.id;
 
       try {
-        const response = await fetch('https://d3arvis.pythonanywhere.com/', {
+        const response = await fetch('https://d3arvis.pythonanywhere.com/signup', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ name, telegramId: userId }),
